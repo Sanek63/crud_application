@@ -41,9 +41,7 @@ class MsgView(BaseHandler):
             return self.write(
                 {
                     "body": {
-                        **db_obj.value
-                    },
-                    "meta": {
+                        **db_obj.value,
                         'duplicates': db_obj.counter
                     }
                 }
