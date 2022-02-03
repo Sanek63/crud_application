@@ -1,0 +1,39 @@
+version: "3.3"
+
+services:
+  db:
+    image: postgres:12-alpine
+    volumes:
+      - app-db-data:/var/lib/postgresql/data/pgdata
+    env_file:
+      - .env
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  backend:
+    image: '${DOCKER_IMAGE_BACKEND?Variable not set}'
+    depends_on:
+      - db
+    env_file:
+      - .env
+    build:
+      context: ./backend
+      dockerfile: backend.dockerfile
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-false}
+
+
+volumes:
+  app-db-data:

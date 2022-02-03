@@ -1,0 +1,1 @@
+from .msg import crud_msg as msg

@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  db:
+    ports:
+      - "5433:5432"
+  pgadmin:
+    ports:
+      - "5050:5050"
+
+  backend:
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./backend/app:/app
+    command: bash -c "sh prestart.sh"
