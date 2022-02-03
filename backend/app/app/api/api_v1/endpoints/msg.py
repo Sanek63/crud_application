@@ -2,7 +2,7 @@ import json
 
 from tornado.routing import PathMatches
 
-from app.api.base import BaseHandler # noqa
+from app.api.base_handler import BaseHandler # noqa
 from app.api.utils import dict_to_b64 # noqa
 from app.db.utils import session_scope, model_to_dict # noqa
 from app import crud, models, schemas # noqa
@@ -131,9 +131,6 @@ class MsgView(BaseHandler):
             return self.write(
                 {'key': encode_data}
             )
-
-
-
 
     def delete(self):
         if self.request.headers.get("Content-Type", "").startswith("application/json"):

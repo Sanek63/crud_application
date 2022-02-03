@@ -1,5 +1,5 @@
 from app.api.api_v1.endpoints import MsgView, StatisticView # noqa
-from app.api.base import MethodAndPathMatch # noqa
+from app.api.base_routing import MethodAndPathMatch # noqa
 
 handlers = [
     (MethodAndPathMatch('POST', '/api/add'), MsgView),

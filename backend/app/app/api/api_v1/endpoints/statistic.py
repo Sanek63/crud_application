@@ -1,4 +1,4 @@
-from app.api.base import BaseHandler # noqa
+from app.api.base_handler import BaseHandler # noqa
 from app.db.utils import session_scope, model_to_dict # noqa
 from app import crud, models, schemas # noqa
 

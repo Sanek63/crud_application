@@ -3,6 +3,7 @@ from tornado.routing import PathMatches
 
 __all__ = ['MethodAndPathMatch', ]
 
+
 class MethodAndPathMatch(PathMatches):
     def __init__(self, method, path_pattern):
         super().__init__(path_pattern)
